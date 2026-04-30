@@ -1,0 +1,84 @@
+/* Define variables de colores personalizados para TechHub */
+:root {
+    --techhub-primary: #0d6efd;
+    --techhub-dark: #111827;
+    --techhub-soft: #f3f6fb;
+}
+
+
+/* Define estilos personalizados para TechHub */
+body {
+    background: linear-gradient(180deg, #f8fbff 0%, #eef3f8 100%);
+    min-height: 100vh;
+}
+
+.hero-techhub {
+    background: linear-gradient(135deg, #0f172a 0%, #1d4ed8 55%, #38bdf8 100%);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+}
+
+.product-card {
+    transition: transform .2s ease, box-shadow .2s ease;
+    overflow: hidden;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 1rem 2rem rgba(15, 23, 42, .12) !important;
+}
+
+.product-image {
+    height: 210px;
+    object-fit: cover;
+    background: #fff;
+}
+
+.cart-count {
+    top: -8px;
+    right: -10px;
+}
+
+.history-thumb {
+    width: 68px;
+    height: 68px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.cart-row {
+    display: grid;
+    grid-template-columns: 56px 1fr auto;
+    gap: .75rem;
+    align-items: center;
+    padding: .75rem 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.cart-row img {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.cart-actions {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+}
+
+.admin-panel-section .table td,
+.admin-panel-section .table th {
+    vertical-align: middle;
+}
+
+@media (max-width: 576px) {
+    .product-image {
+        height: 190px;
+    }
+}

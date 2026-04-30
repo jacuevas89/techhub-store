@@ -1,0 +1,109 @@
+DOCUMENTACIÓN DE ENDPOINTS / FUNCIONES PRINCIPALES
+=================================================
+
+1. RUTAS WEB
+------------
+- index.php?route=home/index
+  Muestra la página principal con el catálogo.
+
+- index.php?route=auth/login
+  GET: muestra formulario de inicio de sesión.
+  POST: valida credenciales y crea la sesión.
+
+- index.php?route=auth/register
+  GET: muestra formulario de registro.
+  POST: valida RUT, email, contraseña y crea usuario.
+
+- index.php?route=auth/logout
+  Cierra la sesión actual.
+
+- index.php?route=admin/index
+  Panel de administración. Solo visible para usuarios admin.
+
+- index.php?route=admin/saveProduct
+  POST: crea o actualiza un producto.
+
+- index.php?route=admin/editProduct&id={id}
+  GET: carga producto en el formulario para edición.
+
+- index.php?route=admin/deleteProduct
+  POST: elimina un producto.
+
+- index.php?route=admin/toggleAdmin
+  POST: cambia el campo admin de un usuario.
+
+- index.php?route=order/history
+  GET: muestra el historial de compras del usuario autenticado.
+
+
+2. ENDPOINTS AJAX / API
+-----------------------
+- index.php?route=api/products
+  Método: GET
+  Parámetros opcionales:
+    * search
+    * categoria
+    * subcategoria
+  Retorna JSON con los productos filtrados.
+
+- index.php?route=api/saveCart
+  Método: POST
+  Body JSON:
+    {
+      "items": [
+        {"id_producto": 1, "cantidad": 2}
+      ]
+    }
+  Guarda el carrito en tabla carritos.
+  * Requiere sesión iniciada.
+
+- index.php?route=api/getCart
+  Método: GET
+  Retorna el carrito guardado del usuario.
+  * Requiere sesión iniciada.
+
+- index.php?route=api/checkout
+  Método: POST
+  Requiere sesión iniciada.
+  Body JSON:
+    {
+      "items": [
+        {"id_producto": 1, "cantidad": 2}
+      ]
+    }
+  Crea orden y detalles de orden.
+  Retorna mensaje: "Plataforma de prueba: Pronto podrás comprar tus productos. Tu orden de prueba ha sido creada con ID: {$orderId}"
+  * Requiere sesión iniciada.
+
+
+3. FUNCIONES / CLASES PRINCIPALES
+---------------------------------
+- Database::getConnection()
+  Devuelve la conexión PDO a MySQL.
+
+- Router::dispatch()
+  Resuelve la ruta y ejecuta el controlador correspondiente.
+
+- User::create()
+  Registra un nuevo usuario.
+
+- User::findByEmail()
+  Busca usuario por correo.
+
+- User::toggleAdmin()
+  Cambia permiso administrador.
+
+- Product::getAll()
+  Obtiene productos y aplica filtros.
+
+- Product::create(), update(), delete()
+  CRUD de productos para administración.
+
+- Cart::save(), getByUser()
+  Guarda y recupera carrito desde base de datos.
+
+- Order::create()
+  Genera la orden y sus detalles usando transacción.
+
+- Order::getByUser(), getDetails()
+  Obtiene historial de compras y sus productos.
