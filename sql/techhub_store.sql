@@ -49,7 +49,7 @@ CREATE TABLE detalles_orden (
     producto_id INT NOT NULL,
     cantidad INT NOT NULL,
     precio_unitario INT NOT NULL,
-    subtotal INT NOT NULL,  -- CAMBIAR POR INT
+    subtotal INT NOT NULL,  
     CONSTRAINT fk_detalles_orden FOREIGN KEY (orden_id) REFERENCES ordenes(id_orden) ON DELETE CASCADE,
     CONSTRAINT fk_detalles_producto FOREIGN KEY (producto_id) REFERENCES productos(id_producto) ON DELETE RESTRICT
 );
@@ -64,6 +64,8 @@ INSERT INTO usuarios (rut, rut_completo, nombre_completo, email, clave_hash, adm
 Administrador: admin@techhub.cl			Clave: 12345678
 Usuario normal: usuario@techhub.cl		Clave: 12345678
 */
+
+-- Inserta productos de prueba
 
 INSERT INTO productos (nombre, descripcion, precio, categoria, subcategoria, imagen) VALUES
 ('Lenovo IdeaPad Pro5', 'Notebook para estudio y trabajo diario con buen rendimiento.', 549990, 'Computación', 'Notebooks', 'notebook.jpg'),
